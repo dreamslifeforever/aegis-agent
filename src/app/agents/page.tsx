@@ -1,58 +1,77 @@
 import { AGENTS } from '@/lib/constants';
+import ParticleField from '@/components/ParticleField';
 
 export default function AgentsPage() {
   return (
-    <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '4rem 2rem' }}>
-      <div style={{ marginBottom: '3rem', textAlign: 'center' }}>
-        <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-          The Collective
+    <div>
+      {/* Hero with particles */}
+      <div style={{ position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+          <ParticleField mode="drift" count={120} height="100%" />
         </div>
-        <h1 style={{ fontFamily: 'var(--font-mono)', fontSize: '2rem', color: 'var(--neon-bright)', letterSpacing: '0.1em' }}>
-          Six Agents
-        </h1>
-        <p style={{ fontSize: '0.9rem', color: 'var(--text-dim)', marginTop: '0.75rem', maxWidth: '36rem', margin: '0.75rem auto 0', lineHeight: 1.6 }}>
-          Each agent has a distinct research task. Together they cover on-chain flow, sentiment, technicals, new tokens, and historical patterns. The core executes when consensus is reached.
-        </p>
+        <section style={{ position: 'relative', zIndex: 1, padding: '6rem 2.5rem 4rem', textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}>
+          <h1
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: 'clamp(2rem, 5vw, 3rem)',
+              fontWeight: 800,
+              color: 'var(--text)',
+              lineHeight: 1.1,
+              marginBottom: '1rem',
+            }}
+          >
+            Six agents.<br />
+            <span style={{ color: 'var(--neon-bright)' }}>Six perspectives.</span>
+          </h1>
+          <p style={{ fontSize: '0.95rem', color: 'var(--text-dim)', lineHeight: 1.6 }}>
+            Each agent covers a distinct dimension of the market. Together they form a complete research apparatus no single model could replicate.
+          </p>
+        </section>
       </div>
 
-      <div className="neon-line" style={{ marginBottom: '2rem' }} />
+      <div className="neon-line" />
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-        {AGENTS.map((a) => (
-          <div key={a.id} className="agent-card" style={{ position: 'relative', padding: '2rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+      <section style={{ padding: '4rem 2.5rem', maxWidth: '900px', margin: '0 auto' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          {AGENTS.map((a) => (
+            <div key={a.id} className="agent-card" style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
               <div
                 style={{
-                  width: '48px',
-                  height: '48px',
+                  width: '56px',
+                  height: '56px',
                   border: '2px solid var(--neon)',
-                  borderRadius: '8px',
+                  borderRadius: '10px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.8rem',
+                  fontSize: '1rem',
+                  fontWeight: 700,
                   color: 'var(--neon-bright)',
                   flexShrink: 0,
+                  boxShadow: '0 0 15px var(--neon-glow)',
                 }}
               >
                 {a.id}
               </div>
               <div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1rem', color: 'var(--neon-bright)', letterSpacing: '0.1em' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.1rem', color: 'var(--neon-bright)', letterSpacing: '0.1em', fontWeight: 700, marginBottom: '0.25rem' }}>
                   {a.name}
                 </div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--neon)', letterSpacing: '0.05em', marginTop: '0.2rem' }}>
+                <div style={{ fontSize: '0.72rem', color: 'var(--neon)', letterSpacing: '0.06em', fontFamily: 'var(--font-mono)', marginBottom: '0.5rem' }}>
                   {a.role}
                 </div>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-dim)', lineHeight: 1.7 }}>
+                  {a.task}
+                </p>
               </div>
             </div>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-dim)', lineHeight: 1.7 }}>
-              {a.task}
-            </p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Particle divider */}
+      <ParticleField mode="wave" count={60} height="120px" />
     </div>
   );
 }

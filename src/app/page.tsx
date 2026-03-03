@@ -1,131 +1,99 @@
-import Link from 'next/link';
 import { AGENTS } from '@/lib/constants';
+import Marquee from '@/components/Marquee';
 import TwitterFeed from '@/components/TwitterFeed';
+import VortexBg from '@/components/VortexBg';
+import ParticleField from '@/components/ParticleField';
 
 export default function Home() {
   return (
     <div>
-      {/* Hero - full width */}
-      <section className="hero-neon">
-        <h1
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 'clamp(2rem, 6vw, 4rem)',
-            fontWeight: 700,
-            letterSpacing: '0.15em',
-            color: 'var(--neon-bright)',
-            marginBottom: '1rem',
-            textShadow: '0 0 40px var(--neon-glow)',
-          }}
-        >
-          AEGIS
-        </h1>
-        <p
-          style={{
-            fontSize: '1.1rem',
-            color: 'var(--text-dim)',
-            maxWidth: '32rem',
-            margin: '0 auto 0.5rem',
-            lineHeight: 1.6,
-          }}
-        >
-          6 agents. 1 signal. Shields deployed.
-        </p>
-        <p
-          style={{
-            fontSize: '0.85rem',
-            color: 'var(--text-muted)',
-            maxWidth: '28rem',
-            margin: '0 auto',
-            lineHeight: 1.6,
-          }}
-        >
-          Six AI agents analyze the entire crypto market — Solana first. Each has a distinct research task. When the collective signals a call, the core buys shields and posts to Twitter.
-        </p>
-
-        {/* Hero art */}
-        <div style={{ marginTop: '2.5rem', display: 'flex', justifyContent: 'center' }}>
-          <div
+      {/* Hero Banner */}
+      <section className="hero-banner">
+        <VortexBg />
+        <div className="hero-banner-overlay" />
+        <div className="hero-content">
+          <h1
             style={{
-              width: '220px',
-              height: '220px',
-              borderRadius: '12px',
-              overflow: 'hidden',
-              border: '2px solid var(--neon)',
-              boxShadow: '0 0 50px var(--neon-glow)',
-            }}
-          >
-            <img
-              src="/hero.png"
-              alt="AEGIS"
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-          </div>
-        </div>
-
-        <div style={{ marginTop: '2.5rem', display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link
-            href="/agents"
-            style={{
-              padding: '0.6rem 1.5rem',
-              background: 'transparent',
-              border: '1px solid var(--neon)',
-              borderRadius: '6px',
+              fontFamily: 'var(--font-mono)',
+              fontSize: 'clamp(2.5rem, 7vw, 5rem)',
+              fontWeight: 800,
+              letterSpacing: '0.15em',
               color: 'var(--neon-bright)',
-              fontSize: '0.8rem',
-              textDecoration: 'none',
-              letterSpacing: '0.05em',
-              transition: 'all 0.2s',
+              textShadow: '0 0 60px var(--neon-glow), 0 0 120px rgba(255,20,147,0.15)',
+              marginBottom: '1rem',
             }}
           >
-            View Agents
-          </Link>
-          <Link
-            href="/core"
-            style={{
-              padding: '0.6rem 1.5rem',
-              background: 'var(--neon)',
-              border: 'none',
-              borderRadius: '6px',
-              color: '#000',
-              fontSize: '0.8rem',
-              textDecoration: 'none',
-              letterSpacing: '0.05em',
-              fontWeight: 600,
-              transition: 'all 0.2s',
-            }}
-          >
-            Core
-          </Link>
+            AEGIS
+          </h1>
+          <p style={{ fontSize: '1.15rem', color: 'var(--text)', letterSpacing: '0.08em', marginBottom: '0.5rem' }}>
+            6 agents. 1 signal. Shields deployed.
+          </p>
+          <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)', maxWidth: '24rem', margin: '0 auto' }}>
+            Collective AI research for the Solana market.
+          </p>
         </div>
       </section>
 
-      {/* 6 Agents Grid */}
-      <section style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
-          <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-            The Collective
-          </div>
-          <h2 style={{ fontFamily: 'var(--font-mono)', fontSize: '1.5rem', color: 'var(--text)', letterSpacing: '0.1em' }}>
-            Six Agents. Six Tasks.
+      {/* Marquee */}
+      <Marquee />
+
+      {/* Big text: What is AEGIS */}
+      <section className="big-section" style={{ display: 'flex', gap: '4rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+        <div style={{ flex: 1, minWidth: '300px' }}>
+          <h2 className="big-title">
+            Six minds.<br />
+            <em>One signal.</em>
           </h2>
         </div>
+        <div style={{ flex: 1, minWidth: '300px' }}>
+          <p className="big-body">
+            AEGIS is a collective of six autonomous AI agents. Each agent has a distinct research specialization — from on-chain flow analysis to social sentiment to technical patterns. When the collective reaches consensus, the core agent executes: buys Solana shields and posts calls to Twitter.
+          </p>
+          <p className="big-body" style={{ marginTop: '1rem' }}>
+            No single agent decides. The signal emerges from agreement.
+          </p>
+        </div>
+      </section>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.25rem' }}>
+      <div className="neon-line" />
+
+      {/* Agents with image */}
+      <section className="big-section">
+        <div style={{ display: 'flex', gap: '4rem', alignItems: 'flex-start', marginBottom: '3rem', flexWrap: 'wrap' }}>
+          <div style={{ flex: 1, minWidth: '280px' }}>
+            <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+              The Collective
+            </div>
+            <h2 className="big-title" style={{ marginBottom: '1rem' }}>
+              Each agent<br />
+              <em>sees differently.</em>
+            </h2>
+            <p className="big-body">
+              Five research agents feed the core. Each covers a different dimension of the market. Together they form a complete picture no single agent could achieve alone.
+            </p>
+          </div>
+          <div style={{ flex: '0 0 280px' }}>
+            <div style={{ borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border)' }}>
+              <img src="/avatar.png" alt="AEGIS" style={{ width: '100%', display: 'block' }} />
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.25rem' }}>
           {AGENTS.map((a) => (
-            <div key={a.id} className="agent-card" style={{ position: 'relative' }}>
+            <div key={a.id} className="agent-card">
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--neon-bright)', letterSpacing: '0.1em' }}>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--neon-bright)', letterSpacing: '0.1em', fontWeight: 700 }}>
                   {a.name}
                 </span>
-                <span style={{ fontSize: '0.6rem', color: 'var(--text-muted)', padding: '0.2rem 0.5rem', background: 'var(--bg)', borderRadius: '4px' }}>
-                  #{a.id}
+                <span style={{ fontSize: '0.55rem', color: 'var(--text-muted)', padding: '0.2rem 0.6rem', background: 'var(--bg)', borderRadius: '4px', fontFamily: 'var(--font-mono)' }}>
+                  AGENT-{a.id}
                 </span>
               </div>
-              <div style={{ fontSize: '0.7rem', color: 'var(--neon)', marginBottom: '0.5rem', letterSpacing: '0.05em' }}>
+              <div style={{ fontSize: '0.7rem', color: 'var(--neon)', marginBottom: '0.5rem', letterSpacing: '0.05em', fontFamily: 'var(--font-mono)' }}>
                 {a.role}
               </div>
-              <p style={{ fontSize: '0.82rem', color: 'var(--text-dim)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)', lineHeight: 1.6 }}>
                 {a.task}
               </p>
             </div>
@@ -133,71 +101,69 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How it works - neon lines diagram */}
-      <section style={{ padding: '4rem 2rem', maxWidth: '900px', margin: '0 auto' }}>
-        <div className="neon-line" style={{ marginBottom: '2rem' }} />
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-            Flow
-          </div>
-          <h2 style={{ fontFamily: 'var(--font-mono)', fontSize: '1.2rem', color: 'var(--text)', letterSpacing: '0.08em' }}>
-            Research → Signal → Execute
-          </h2>
-        </div>
+      <div className="neon-line" />
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
-          <div style={{ textAlign: 'center', padding: '1rem' }}>
-            <div style={{ width: '60px', height: '60px', margin: '0 auto 0.5rem', border: '2px solid var(--neon)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.65rem', color: 'var(--neon)' }}>
-              5
-            </div>
-            <div style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Agents research</div>
-          </div>
-          <div style={{ width: '24px', height: '1px', background: 'var(--neon)', opacity: 0.6 }} />
-          <div style={{ textAlign: 'center', padding: '1rem' }}>
-            <div style={{ width: '60px', height: '60px', margin: '0 auto 0.5rem', border: '2px solid var(--neon)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.6rem', color: 'var(--neon)', boxShadow: '0 0 25px var(--neon-glow)' }}>
-              CALL
-            </div>
-            <div style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Consensus</div>
-          </div>
-          <div style={{ width: '24px', height: '1px', background: 'var(--neon)', opacity: 0.6 }} />
-          <div style={{ textAlign: 'center', padding: '1rem' }}>
-            <div style={{ width: '60px', height: '60px', margin: '0 auto 0.5rem', border: '2px solid var(--neon)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.6rem', color: 'var(--neon)' }}>
-              CORE
-            </div>
-            <div style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Buys + Tweets</div>
-          </div>
-        </div>
+      {/* How it works - big text style */}
+      <section className="big-section" style={{ textAlign: 'center' }}>
+        <h2 className="big-title" style={{ marginBottom: '3rem' }}>
+          Research. <em>Consensus.</em> Execute.
+        </h2>
 
-        <div className="neon-line" style={{ marginTop: '2rem' }} />
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
+          {[
+            { num: '5', label: 'Agents research', sub: 'On-chain, social, TA, new tokens, history' },
+            { num: '→', label: 'Signal', sub: 'Consensus reached across the collective' },
+            { num: '1', label: 'Core executes', sub: 'Buys shields, posts to Twitter' },
+          ].map((s, i) => (
+            <div key={i} style={{ width: '240px', textAlign: 'center' }}>
+              <div
+                style={{
+                  width: '80px',
+                  height: '80px',
+                  margin: '0 auto 1rem',
+                  border: i === 1 ? '2px solid var(--neon)' : '1px solid var(--border)',
+                  borderRadius: i === 1 ? '50%' : '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '1.5rem',
+                  fontWeight: 700,
+                  color: 'var(--neon-bright)',
+                  boxShadow: i === 1 ? '0 0 30px var(--neon-glow)' : 'none',
+                }}
+              >
+                {s.num}
+              </div>
+              <div style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text)', marginBottom: '0.35rem' }}>
+                {s.label}
+              </div>
+              <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)', lineHeight: 1.5 }}>
+                {s.sub}
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
+      <div className="neon-line" />
+
+      {/* Particle divider */}
+      <ParticleField mode="drift" count={60} height="100px" />
+
       {/* Twitter feed */}
-      <section style={{ padding: '4rem 2rem' }}>
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-            Output
-          </div>
-          <h2 style={{ fontFamily: 'var(--font-mono)', fontSize: '1.2rem', color: 'var(--text)', letterSpacing: '0.08em' }}>
-            Twitter Feed
-          </h2>
-        </div>
+      <section className="big-section" style={{ textAlign: 'center' }}>
+        <h2 className="big-title" style={{ marginBottom: '1rem' }}>
+          Live <em>output.</em>
+        </h2>
+        <p className="big-body" style={{ margin: '0 auto 2.5rem', textAlign: 'center' }}>
+          What the collective broadcasts.
+        </p>
         <TwitterFeed />
       </section>
 
-      {/* Stats bar */}
-      <section style={{ padding: '2rem', display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap' }}>
-        {[
-          { label: 'Agents', value: '6' },
-          { label: 'Focus', value: 'Solana' },
-          { label: 'Output', value: 'Shields' },
-          { label: 'Channel', value: 'Twitter' },
-        ].map((s) => (
-          <div key={s.label} style={{ textAlign: 'center' }}>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.5rem', color: 'var(--neon-bright)', fontWeight: 700 }}>{s.value}</div>
-            <div style={{ fontSize: '0.6rem', color: 'var(--text-muted)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{s.label}</div>
-          </div>
-        ))}
-      </section>
+      {/* Bottom particle field */}
+      <ParticleField mode="rain" count={50} height="150px" />
     </div>
   );
 }

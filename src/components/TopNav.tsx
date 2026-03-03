@@ -7,6 +7,8 @@ import { PROJECT } from '@/lib/constants';
 const links = [
   { href: '/', label: 'Home' },
   { href: '/agents', label: 'Agents' },
+  { href: '/signals', label: 'Signals' },
+  { href: '/docs', label: 'Docs' },
   { href: '/core', label: 'Core' },
 ];
 
