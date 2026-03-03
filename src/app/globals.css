@@ -1,0 +1,169 @@
+@import 'tailwindcss';
+
+:root {
+  --bg: #050508;
+  --bg-card: #0a0a10;
+  --bg-elevated: #0f0f18;
+  --text: #e8e8f0;
+  --text-dim: #8888a0;
+  --text-muted: #55556a;
+  --neon: #ff1493;
+  --neon-bright: #ff69b4;
+  --neon-dim: #ff149380;
+  --neon-glow: rgba(255, 20, 147, 0.25);
+  --neon-line: rgba(255, 20, 147, 0.6);
+  --border: #1a1a28;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Neon line accent */
+.neon-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  opacity: 0.7;
+}
+
+.neon-line-vert {
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--neon), transparent);
+  opacity: 0.5;
+}
+
+/* Cards with neon border */
+.card-neon {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-neon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  opacity: 0.8;
+}
+
+.card-neon:hover {
+  border-color: var(--neon-dim);
+  box-shadow: 0 0 20px var(--neon-glow);
+}
+
+/* Nav */
+.nav-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  background: rgba(5, 5, 8, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--neon-line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 100;
+}
+
+.nav-logo {
+  font-family: var(--font-mono), monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--neon-bright);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.nav-link:hover, .nav-link.active { color: var(--neon-bright); }
+
+/* Main content - full width, no sidebar */
+.main-full {
+  padding-top: 56px;
+  min-height: 100vh;
+}
+
+/* Hero */
+.hero-neon {
+  position: relative;
+  padding: 4rem 2rem 5rem;
+  text-align: center;
+}
+
+.hero-neon::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon), transparent);
+}
+
+/* Agent card */
+.agent-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: all 0.3s;
+}
+
+.agent-card:hover {
+  border-color: var(--neon-dim);
+  box-shadow: 0 0 30px var(--neon-glow);
+}
+
+.agent-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  opacity: 0.6;
+}
+
+/* Glow animation */
+@keyframes neon-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.animate-neon {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+@media (max-width: 640px) {
+  .nav-top { padding: 0 1rem; }
+  .nav-links { gap: 1rem; }
+  .nav-link { font-size: 0.75rem; }
+}
