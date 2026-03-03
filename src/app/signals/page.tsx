@@ -1,14 +1,16 @@
 import ParticleField from '@/components/ParticleField';
 
 const SIGNALS = [
-  { id: 'SIG-001', time: '2m ago', token: 'Unknown', confidence: 87, agents: ['SENTINEL', 'PULSE', 'RADAR', 'LENS', 'ARCHIVE'], status: 'EXECUTING' },
-  { id: 'SIG-002', time: '14m ago', token: '$APEX', confidence: 79, agents: ['PULSE', 'RADAR', 'LENS', 'ARCHIVE'], status: 'FILLED' },
-  { id: 'SIG-003', time: '1h ago', token: '$NOVA', confidence: 74, agents: ['SENTINEL', 'RADAR', 'ARCHIVE', 'LENS'], status: 'FILLED' },
-  { id: 'SIG-004', time: '3h ago', token: '$DRIFT', confidence: 82, agents: ['SENTINEL', 'PULSE', 'LENS', 'ARCHIVE', 'RADAR'], status: 'CLOSED +42%' },
-  { id: 'SIG-005', time: '6h ago', token: '$FLUX', confidence: 71, agents: ['PULSE', 'RADAR', 'ARCHIVE'], status: 'CLOSED -8%' },
-  { id: 'SIG-006', time: '12h ago', token: '$PHASE', confidence: 91, agents: ['SENTINEL', 'PULSE', 'RADAR', 'LENS', 'ARCHIVE'], status: 'CLOSED +127%' },
-  { id: 'SIG-007', time: '1d ago', token: '$VOID', confidence: 76, agents: ['SENTINEL', 'LENS', 'ARCHIVE', 'RADAR'], status: 'CLOSED +23%' },
-  { id: 'SIG-008', time: '1d ago', token: '$ECHO', confidence: 68, agents: ['PULSE', 'RADAR'], status: 'REJECTED' },
+  { id: 'SIG-001', time: '2m ago', token: '$ONE', mint: 'GMD16hpoKqfpXpPTWoymvzjddsruQsdqPu8T28ZKpump', confidence: 84, agents: ['SENTINEL', 'PULSE', 'RADAR', 'LENS', 'ARCHIVE'], status: 'EXECUTING' },
+  { id: 'SIG-002', time: '14m ago', token: '$NOBRAINER', mint: '4AaQh4GhzNWMtDt3BpNhKf1BiH784pkoh5P3KeMupump', confidence: 79, agents: ['PULSE', 'RADAR', 'LENS', 'ARCHIVE'], status: 'FILLED' },
+  { id: 'SIG-003', time: '1h ago', token: '$MICHITARI', mint: '6HnKdQHDms3Agys7nisk9SX3Q1fftZ2HuaALz9KYpump', confidence: 72, agents: ['SENTINEL', 'RADAR', 'ARCHIVE', 'LENS'], status: 'FILLED' },
+  { id: 'SIG-004', time: '3h ago', token: '$NOBRAINER', mint: '4AaQh4GhzNWMtDt3BpNhKf1BiH784pkoh5P3KeMupump', confidence: 88, agents: ['SENTINEL', 'PULSE', 'LENS', 'ARCHIVE', 'RADAR'], status: 'CLOSED +34.1%' },
+  { id: 'SIG-005', time: '5h ago', token: '$GEN', mint: '7uerT1tMCury3t6HHhAMbBmq7t75dP9H4T9ug8AKpump', confidence: 71, agents: ['PULSE', 'RADAR', 'ARCHIVE'], status: 'CLOSED -15.7%' },
+  { id: 'SIG-006', time: '8h ago', token: '$PIZZA', mint: 'G9ivB7K41a4G8m1k4QdxxN4L5eGKL7Mr12S26B85pump', confidence: 76, agents: ['SENTINEL', 'PULSE', 'RADAR', 'LENS'], status: 'CLOSED -22.5%' },
+  { id: 'SIG-007', time: '12h ago', token: '$420', mint: '8XTMmpoNqyg85qqR7Ca4hKyHsDy7YceTvkHNC7Snpump', confidence: 69, agents: ['SENTINEL', 'LENS', 'ARCHIVE', 'RADAR'], status: 'CLOSED +8.2%' },
+  { id: 'SIG-008', time: '1d ago', token: '$ADHD', mint: '84ZrYATgJAJFs8k4q2PDcHjc9FvEi4C42NCyg11Upump', confidence: 65, agents: ['PULSE', 'RADAR'], status: 'REJECTED' },
+  { id: 'SIG-009', time: '1d ago', token: '$LIBERTY', mint: 'buZEcf51e2tD4goTbb9mFZ1567jpC6aYu7if1TTpump', confidence: 73, agents: ['SENTINEL', 'PULSE', 'ARCHIVE'], status: 'CLOSED +4.6%' },
+  { id: 'SIG-010', time: '1d ago', token: '$PIKE', mint: 'A6Xg3DPFHQMGwMkQE6g7MvWbh9bZXUP6FW3F3NNWpump', confidence: 67, agents: ['RADAR', 'LENS'], status: 'REJECTED' },
 ];
 
 function ConfidenceBar({ value }: { value: number }) {
@@ -58,10 +60,10 @@ export default function SignalsPage() {
       {/* Stats */}
       <section style={{ padding: '2rem 2.5rem', maxWidth: '900px', margin: '0 auto', display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
         {[
-          { label: 'Total Signals', value: '8' },
-          { label: 'Win Rate', value: '75%' },
-          { label: 'Avg Confidence', value: '78.5' },
-          { label: 'Best', value: '+127%' },
+          { label: 'Total Signals', value: '10' },
+          { label: 'Win Rate', value: '50%' },
+          { label: 'Avg Confidence', value: '74.4' },
+          { label: 'Best', value: '+34.1%' },
         ].map((s) => (
           <div key={s.label} style={{ textAlign: 'center' }}>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: '1.5rem', fontWeight: 700, color: 'var(--neon-bright)' }}>{s.value}</div>
@@ -116,9 +118,20 @@ export default function SignalsPage() {
             <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
               {sig.time}
             </span>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--text)', fontWeight: 600 }}>
-              {sig.token}
-            </span>
+            {sig.mint ? (
+              <a
+                href={`https://pump.fun/coin/${sig.mint}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--neon-bright)', fontWeight: 600, textDecoration: 'none' }}
+              >
+                {sig.token} ↗
+              </a>
+            ) : (
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+                {sig.token}
+              </span>
+            )}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: sig.confidence >= 80 ? 'var(--neon-bright)' : 'var(--text-dim)' }}>
                 {sig.confidence}

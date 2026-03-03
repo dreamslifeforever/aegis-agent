@@ -39,6 +39,7 @@ export default function CorePage() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border)' }}>
           {[
+            { label: 'SNS Domain', value: PROJECT.sns || '', desc: 'Solana Name Service', link: `https://sns.id/domain/${(PROJECT.sns || '').replace('.sol', '')}` },
             { label: 'Agent Wallet', value: PROJECT.wallet, desc: 'Primary execution wallet' },
             { label: 'Treasury', value: PROJECT.treasury, desc: 'Collective treasury vault' },
             { label: 'Multisig (2/3)', value: PROJECT.multisig, desc: 'Council-governed multisig' },
@@ -64,7 +65,7 @@ export default function CorePage() {
               <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: item.value ? 'var(--neon-bright)' : 'var(--text-muted)', wordBreak: 'break-all', textAlign: 'right', maxWidth: '400px' }}>
                 {item.value ? (
                   <a
-                    href={`https://solscan.io/account/${item.value}`}
+                    href={(item as any).link || `https://solscan.io/account/${item.value}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ color: 'var(--neon-bright)', textDecoration: 'none' }}

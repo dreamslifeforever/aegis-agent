@@ -1,4 +1,4 @@
-import { AGENTS } from '@/lib/constants';
+import { AGENTS, PROJECT } from '@/lib/constants';
 import Marquee from '@/components/Marquee';
 import TwitterFeed from '@/components/TwitterFeed';
 import VortexBg from '@/components/VortexBg';
@@ -28,9 +28,27 @@ export default function Home() {
           <p style={{ fontSize: '1.15rem', color: 'var(--text)', letterSpacing: '0.08em', marginBottom: '0.5rem' }}>
             6 agents. 1 signal. Shields deployed.
           </p>
-          <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)', maxWidth: '24rem', margin: '0 auto' }}>
+          <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)', maxWidth: '24rem', margin: '0 auto', marginBottom: '1rem' }}>
             Collective AI research for the Solana market.
           </p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            <a
+              href={`https://sns.id/domain/${PROJECT.sns?.replace('.sol', '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--neon)', border: '1px solid var(--neon)', padding: '0.4rem 1rem', borderRadius: '6px', textDecoration: 'none', letterSpacing: '0.05em' }}
+            >
+              {PROJECT.sns}
+            </a>
+            <a
+              href={PROJECT.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)', textDecoration: 'none', letterSpacing: '0.05em' }}
+            >
+              @aegis6agents ↗
+            </a>
+          </div>
         </div>
       </section>
 
